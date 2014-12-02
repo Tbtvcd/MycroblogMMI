@@ -1,7 +1,7 @@
 <?php
 $dbc = array(
-    'host' => '',
-    'user' => '',
+    'host' => 'localhost',
+    'user' => 'root',
     'password' => '',
-    'dbName' => ''
+    'dbName' => 'mycroblog'
 );
