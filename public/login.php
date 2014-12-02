@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+if(isset($_POST['inputLogin']) && isset($_POST['inputPassword']))
+{
+    $username = $_POST['inputLogin'];
+    $password = $_POST['inputPassword'];
+
+    require '../config/databaseCredentials.php';
+    $db =  new mysqli($dbc['host'], $dbc['user'], $dbc['password'], $dbc['dbName']);
+
+    $result = $db->query("SELECT * FROM users WHERE login = '$username' AND password = '$password'");
+    if($result && $result->num_rows > 0)
+        $_SESSION['username'] = $_POST['inputLogin'];
+    else
+        echo $db->error;
+
+    header('Location: index.php');
+}
+
 // Auto chargement des dépendences Composer
 require_once '../vendor/autoload.php';
 
@@ -22,10 +40,5 @@ else {
         'page_title' => 'MycroBlog Home',
         'title'      => 'MycroBlog');
 }
-
-
-// Compilation et Affichage du template (index.twig)
-// Dans le fichier index.twig, le code {{ name }}
-// sera remplacé par sa valeur dans le tableau ("World")
 echo $twig->render('login.twig', $data);
 
