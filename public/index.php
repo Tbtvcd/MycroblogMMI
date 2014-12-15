@@ -1,20 +1,28 @@
 <?php
 session_start();
-// Auto chargement des dépendences Composer
-require_once '../application/Viewer.php';
+require_once '../vendor/autoload.php';
+require_once '../application/Controller.php';
 
-if(isset($_SESSION['username'])) {
-    $data = array(
-        'username' => $_SESSION['username'],
-        'page_title' => 'MycroBlog Home',
-        'title'    => 'MycroBlog');
+$controller = new Controller();
+if(isset($_GET['action'])) {
+
+    switch($_GET['action']) {
+        case 'login':
+            $controller->login();
+            break;
+        case 'register':
+            $controller->register();
+            break;
+        case 'logout':
+            $controller->logout();
+            break;
+        default:
+            $controller->index();
+    }
 }
+else
+    $controller->index();
 
-else {
-    $data = array(
-        'page_title' => 'MycroBlog Home',
-        'title'      => 'MycroBlog');
-}
 
-$viewer = new Viewer();
-$viewer->render('index.twig', $data);
+
+

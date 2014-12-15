@@ -5,8 +5,6 @@
  * Date: 15/12/14
  * Time: 14:39
  */
-require_once '../vendor/autoload.php';
-
 class Viewer {
     private $twig;
 

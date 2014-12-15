@@ -14,10 +14,10 @@
         <ul class="nav navbar-nav navbar-right">
           {% if username is defined %}
             <p class="navbar-text">Welcome <strong>{{ username }}</strong> !</p>
-            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
           {% else %}
-            <li><a href="register.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;Register</a></li>
-            <li><a href="login.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
+            <li><a href="/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;Register</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
           {% endif %}
         </ul>
       </div><!--/.nav-collapse -->
